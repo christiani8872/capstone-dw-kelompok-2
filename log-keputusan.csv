@@ -1,2 +1,2 @@
 id,tanggal,nim,tahap,seri_kode,keputusan,alternatif_ditolak,alasan,dampak_baris
-K-001,2026-11-03,12345678,silver,var543,"periode bulanan Februari/Agustus disimpan sebagai jenis_periode=bulan","rata-rata ke tahunan","sumber menerbitkan dua kali setahun; agregasi dilakukan di Gold",0
+K-001,2026-11-08,124450046,pembersihan,wilayah_provinsi,menggunakan standar kode wilayah BPS untuk 38 provinsi tahun 2025 (termasuk DOB Papua),menggunakan penamaan teks bebas atau format lama 34 provinsi,menjaga konsistensi penggabungan data nasional dan regional serta mengakomodasi pemekaran wilayah terbaru,0
