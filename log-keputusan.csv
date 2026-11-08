@@ -1,4 +1,4 @@
-id,tanggal,nim,tahap,seri_kode,keputusan,alternatif_ditolak,alasan,dampak_baris
+
 id,tanggal,nim,tahap,seri_kode,keputusan,alternatif_ditolak,alasan,dampak_baris
 K-001,2026-11-08,124450046,pembersihan,wilayah_provinsi,"Menggunakan standar kode wilayah BPS untuk 38 provinsi tahun 2025 (termasuk DOB Papua)","Menggunakan penamaan teks bebas atau format lama 34 provinsi","Menjaga konsistensi penggabungan data nasional dan regional serta mengakomodasi pemekaran wilayah terbaru",0
 K-002,2026-11-08,124450064,raw,"BPS var1373; WHO GHO MDG_0000000007","Pemetaan data historis ke 38 provinsi dan verifikasi SHA256","Tidak memetakan ulang provinsi lama","Dataset BPS 2012-2019 masih menggunakan 34 provinsi. Untuk tabel Gold yang konsisten dan mencegah hilangnya data (silent drop), wilayah lama diselaraskan ke struktur 38 provinsi.",0
