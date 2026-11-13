@@ -1,0 +1,14 @@
+{
+  "nim": "124450064",
+  "nama": "HAFIDZ WAHDIANSYAH",
+  "komponen": "Ekstraksi dan lineage",
+  "sprint": 1,
+  "metrik": {
+    "total_baris_wdi": 125,
+    "total_baris_bps": 245,
+    "total_baris_who": 183,
+    "total_baris_gabungan": 553,
+    "jumlah_berkas_mentah_dibaca": 9,
+    "status_sha256": "Semua file valid"
+  }
+}
