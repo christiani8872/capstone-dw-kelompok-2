@@ -212,84 +212,84 @@ K1_Kematian_Balita,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000007,Kematian
 K1_Kematian_Balita,Pembanding Nasional (WDI),WDI,SH.DYN.MORT,Kematian balita,2023,18.4,,,per_1000_kh,kelompok-05-hal-01.json
 K1_Kematian_Balita,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000007,Kematian balita (under 5),2023,20.624380701,15.220645024,27.957972754,per_1000_kh,2322814_MDG_0000000007.csv
 K1_Kematian_Balita,Pembanding Nasional (WDI),WDI,SH.DYN.MORT,Kematian balita,2024,17.7,,,per_1000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1985,474.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1985,473.585118,342.939433,634.0673345,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1986,455.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1986,455.1877824,335.3682808,596.1017885,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1987,437.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1987,437.2433383,329.7582708,561.8640127,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1988,431.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1988,431.3011629,331.8678737,544.7201275,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1989,402.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1989,401.8315875,314.3067066,501.8375158,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1990,392.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1990,391.7162469,312.1814735,486.1211497,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1991,378.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1991,378.0862781,305.2643233,466.2197738,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1992,359.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1992,359.273041,290.3567692,441.6206043,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1993,327.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1993,326.6306924,266.1594428,401.4790597,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1994,333.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1994,332.5226947,272.0525377,407.6443642,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1995,334.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1995,334.4903649,272.5274031,409.9665967,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1996,331.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1996,330.9499974,270.0159227,407.8658569,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1997,323.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1997,322.796021,263.096932,399.6099949,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1998,317.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1998,317.2976572,259.3180588,392.4880847,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1999,321.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1999,320.5622779,261.9536931,397.2309501,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2000,311.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2000,311.2423413,254.1562054,386.0785059,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2001,300.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2001,300.1962727,244.7059074,371.0172932,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2002,283.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2002,283.4772492,230.7902983,350.7328278,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2003,279.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2003,278.8895439,227.3712433,346.3138862,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2004,283.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2004,283.3133149,206.4633411,393.4330653,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2005,268.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2005,268.0731401,216.7657839,333.6197187,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2006,264.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2006,264.1546264,212.6482849,331.9320264,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2007,257.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2007,256.653307,205.3696475,324.9745221,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2008,251.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2008,250.9030307,198.9957369,321.4291775,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2009,246.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2009,245.5681924,192.8037321,318.4996081,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2010,242.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2010,241.8579638,187.3933279,321.1589634,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2011,230.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2011,230.4643653,177.1401682,311.9622178,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2012,220.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2012,220.2818086,166.8548607,303.3702545,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2013,208.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2013,208.4726027,155.7925547,294.2517445,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2014,198.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2014,198.4176163,146.7164303,288.1017298,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2015,190.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2015,190.1884546,139.0163071,281.5081698,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2016,182.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2016,181.753252,131.6948738,273.9274561,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2017,173.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2017,173.117205,124.1611833,264.2511324,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2018,168.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2018,168.1071681,118.897648,261.5615594,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2019,161.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2019,161.194391,113.0185638,254.2917982,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2020,184.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2020,184.4357347,126.8173862,300.8186768,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2021,226.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2021,226.4617341,142.5882801,395.9033415,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2022,148.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2022,148.2435072,100.7962031,245.4460318,per_100000_kh,AC597B1_MDG_0000000026.csv
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2023,140.0,,,per_100000_kh,kelompok-05-hal-01.json
-K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2023,140.4991767,93.4101402,235.1417538,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1985,474.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1985,473.585118,342.939433,634.0673345,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1986,455.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1986,455.1877824,335.3682808,596.1017885,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1987,437.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1987,437.2433383,329.7582708,561.8640127,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1988,431.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1988,431.3011629,331.8678737,544.7201275,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1989,402.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1989,401.8315875,314.3067066,501.8375158,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1990,392.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1990,391.7162469,312.1814735,486.1211497,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1991,378.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1991,378.0862781,305.2643233,466.2197738,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1992,359.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1992,359.273041,290.3567692,441.6206043,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1993,327.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1993,326.6306924,266.1594428,401.4790597,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1994,333.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1994,332.5226947,272.0525377,407.6443642,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1995,334.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1995,334.4903649,272.5274031,409.9665967,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1996,331.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1996,330.9499974,270.0159227,407.8658569,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1997,323.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1997,322.796021,263.096932,399.6099949,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1998,317.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1998,317.2976572,259.3180588,392.4880847,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),1999,321.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,1999,320.5622779,261.9536931,397.2309501,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2000,311.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2000,311.2423413,254.1562054,386.0785059,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2001,300.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2001,300.1962727,244.7059074,371.0172932,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2002,283.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2002,283.4772492,230.7902983,350.7328278,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2003,279.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2003,278.8895439,227.3712433,346.3138862,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2004,283.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2004,283.3133149,206.4633411,393.4330653,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2005,268.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2005,268.0731401,216.7657839,333.6197187,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2006,264.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2006,264.1546264,212.6482849,331.9320264,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2007,257.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2007,256.653307,205.3696475,324.9745221,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2008,251.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2008,250.9030307,198.9957369,321.4291775,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2009,246.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2009,245.5681924,192.8037321,318.4996081,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2010,242.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2010,241.8579638,187.3933279,321.1589634,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2011,230.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2011,230.4643653,177.1401682,311.9622178,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2012,220.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2012,220.2818086,166.8548607,303.3702545,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2013,208.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2013,208.4726027,155.7925547,294.2517445,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2014,198.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2014,198.4176163,146.7164303,288.1017298,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2015,190.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2015,190.1884546,139.0163071,281.5081698,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2016,182.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2016,181.753252,131.6948738,273.9274561,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2017,173.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2017,173.117205,124.1611833,264.2511324,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2018,168.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2018,168.1071681,118.897648,261.5615594,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2019,161.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2019,161.194391,113.0185638,254.2917982,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2020,184.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2020,184.4357347,126.8173862,300.8186768,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2021,226.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2021,226.4617341,142.5882801,395.9033415,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2022,148.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2022,148.2435072,100.7962031,245.4460318,per_100000_kh,AC597B1_MDG_0000000026.csv
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WDI - Konteks Nasional),WDI,SH.STA.MMRT,Rasio kematian ibu (estimasi model),2023,140.0,,,per_100000_kh,kelompok-05-hal-01.json
+K2_Rasio_Kematian_Ibu,Pembanding Nasional (WHO GHO - Konteks Nasional),WHO_GHO,MDG_0000000026,Rasio kematian ibu,2023,140.4991767,93.4101402,235.1417538,per_100000_kh,AC597B1_MDG_0000000026.csv
 K3_Persalinan_Faskes_Nakes,Pembanding Nasional (WDI - Nakes Total),WDI,SH.STA.BRTC.ZS,Persalinan ditolong tenaga kesehatan terlatih,1987,36.3,,,persen,kelompok-05-hal-01.json
 K3_Persalinan_Faskes_Nakes,Pembanding Nasional (WDI - Nakes Total),WDI,SH.STA.BRTC.ZS,Persalinan ditolong tenaga kesehatan terlatih,1990,40.7,,,persen,kelompok-05-hal-01.json
 K3_Persalinan_Faskes_Nakes,Pembanding Nasional (WDI - Nakes Total),WDI,SH.STA.BRTC.ZS,Persalinan ditolong tenaga kesehatan terlatih,1991,35.1,,,persen,kelompok-05-hal-01.json
