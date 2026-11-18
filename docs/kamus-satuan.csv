@@ -1,0 +1,10 @@
+seri_kode,sumber,ukuran,satuan_baku,dasar
+var1373,BPS,Kematian balita,per_1000_kh,Judul JSON: Angka Kematian Balita Per 1000 Kelahiran Hidup
+var1584,BPS,Kematian bayi (AKB),per_1000_kh,Judul JSON: Angka Kematian Bayi (AKB) Per 1000 Kelahiran Hidup
+var1541,BPS,Persalinan terakhir di fasilitas kesehatan (40% terbawah),persen,Judul JSON dan unit Persen
+MDG_0000000007,WHO,Kematian balita (under 5),per_1000_kh,Nama indikator dan kolom RATE_PER_1000_N
+WHOSIS_000003,WHO,Kematian neonatal (DIM_AGE D_LE27),per_1000_kh,Nama indikator dan kolom RATE_PER_1000_N
+MDG_0000000026,WHO,Rasio kematian ibu,per_100000_kh,Nama indikator dan kolom RATE_PER_100000_N
+SH.DYN.MORT,WDI,Kematian balita,per_1000_kh,Nama: under-5 (per 1000 live births)
+SH.STA.MMRT,WDI,Rasio kematian ibu (estimasi model),per_100000_kh,Nama: per 100000 live births
+SH.STA.BRTC.ZS,WDI,Persalinan ditolong tenaga kesehatan terlatih,persen,Nama: % of total
