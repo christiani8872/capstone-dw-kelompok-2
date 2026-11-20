@@ -1,35 +1,37 @@
 import json
-import hashlib
 import pandas as pd
 from pathlib import Path
-
-def hitung_sha256(filepath):
-    sha256_hash = hashlib.sha256()
-    with open(filepath, "rb") as f:
-        for byte_block in iter(lambda: f.read(4096), b""):
-            sha256_hash.update(byte_block)
-    return sha256_hash.hexdigest()
+from src.common.manifest import sha256_raw
 
 def baca_bps():
-    folder_bps = Path("data/raw/bps/2026-10-20/json")
+    # Kedua folder ada di dalam 2026-10-20
+    folder_json = Path("data/raw/bps/2026-10-20/json")
+    folder_csv = Path("data/raw/bps/2026-10-20")
     
-    # KITA GUNAKAN NAMA FILE YANG BERHASIL DIBACA SAJA DULU
-    # (Silakan ganti nama_v1373 jika sudah tahu nama yang benar)
-    daftar_file = [
-        "sdg3_3_2_1_v1373.json",   # <-- NAMA YANG BENAR
-        "sdg3_3_2_1_v1584.json",   # Kematian Bayi
-        "sdg3_3_1_2_v1541.json"    # Persalinan di Fasilitas
+    daftar_json = [
+        "sdg3_3_2_1_v1373.json",
+        "sdg3_3_2_1_v1584.json",
+        "sdg3_3_1_2_v1541.json"
+    ]
+    
+    daftar_csv = [
+        "sdg3_3_2_1_v1373.csv",
+        "sdg3_3_2_1_v1584.csv",
+        "sdg3_3_1_2_v1541.csv"
     ]
     
     semua_data = []
 
-    for nama_file in daftar_file:
-        file_path = folder_bps / nama_file
+    # --- 1. PROSES JSON ---
+    print("=== Memproses File JSON ===")
+    for nama_file in daftar_json:
+        file_path = folder_json / nama_file
         if not file_path.exists():
-            print(f"Peringatan: File {nama_file} tidak ditemukan!")
+            print(f"Peringatan: File JSON {nama_file} tidak ditemukan!")
             continue
 
-        hash_file = hitung_sha256(file_path)
+        path_relatif = f"bps/2026-10-20/json/{nama_file}"
+        hash_file = sha256_raw(path_relatif)
         print(f"Membaca {nama_file} | SHA256: {hash_file}")
 
         with open(file_path, "r", encoding="utf-8") as f:
@@ -40,33 +42,11 @@ def baca_bps():
             kode_var = str(var_info["val"])
             nama_var = var_info["label"]
             
-            # Ambil daftar provinsi dan tahun dari JSON
-            list_prov = [p["label"] for p in block.get("vervar", [])]
-            list_tahun = [t["label"] for t in block.get("tahun", [])]
-            
-            # Ekstrak datacontent dengan iterasi biasa
             for kunci, nilai in block.get("datacontent", {}).items():
-                # Kunci BPS biasanya berakhiran 0 (misal 7400154101190)
-                # Kita tidak perlu memotong string, kita cukup pakai indeks jika datanya list
-                # TAPI karena formatnya dictionary, kita akali dengan mengambil data dari metadata
-                
-                # Karena formatnya dict, kita harus iterasi manual
-                # Kunci = [KodeProv][KodeVar][KodeTahun][0]
-                pass
-                
-            # KODE YANG BENAR: Kita pakai logika pengecekan manual
-            for kunci, nilai in block.get("datacontent", {}).items():
-                # Ambil nilai provinsi dan tahun dari kunci berdasarkan kode_var
-                # Kunci selalu diakhiri '0'
                 inti_kunci = kunci[:-1] 
-                
-                # Cari kode provinsi (4 digit pertama)
                 kode_prov = inti_kunci[:4]
-                
-                # Cari kode tahun (3 digit terakhir)
                 kode_tahun = inti_kunci[-3:]
                 
-                # Cocokkan kode dengan label
                 prov_label = "UNKNOWN"
                 for p in block.get("vervar", []):
                     if str(p["val"]) == kode_prov:
@@ -87,24 +67,51 @@ def baca_bps():
                         "wilayah": prov_label,
                         "tahun": int(tahun_label),
                         "nilai": float(nilai),
-                        "berkas_raw": nama_file,
-                        "sha256_raw": hash_file
+                        "_berkas_raw": nama_file,
+                        "_sha256_raw": hash_file
                     })
 
+    # --- 2. PROSES CSV ---
+    print("\n=== Memproses File CSV ===")
+    for nama_file in daftar_csv:
+        file_path = folder_csv / nama_file
+        if not file_path.exists():
+            print(f"Peringatan: File CSV {nama_file} tidak ditemukan!")
+            continue
+            
+        path_relatif = f"bps/2026-10-20/{nama_file}"
+        hash_file = sha256_raw(path_relatif)
+        print(f"Membaca {nama_file} | SHA256: {hash_file}")
+
+        df_csv = pd.read_csv(file_path)
+        
+        for _, baris in df_csv.iterrows():
+            semua_data.append({
+                "sumber": "BPS",
+                "kode_indikator": str(baris["var_id"]),
+                "nama_indikator": f"Var {baris['var_id']}",
+                "wilayah": baris["wilayah"],
+                "tahun": int(baris["tahun"]),
+                "nilai": float(baris["nilai"]),
+                "_berkas_raw": nama_file,
+                "_sha256_raw": hash_file
+            })
+
+    # --- 3. SIMPAN ---
     df = pd.DataFrame(semua_data)
     if not df.empty:
         df = df.sort_values(by=["kode_indikator", "wilayah", "tahun"]).reset_index(drop=True)
-        print(f"\nBerhasil mengekstrak {len(df)} baris data BPS.")
+        print(f"\nBerhasil mengekstrak TOTAL {len(df)} baris data BPS.")
         
         output_path = Path("data/silver/bps_ekstrak.parquet")
         output_path.parent.mkdir(parents=True, exist_ok=True)
         df.to_parquet(output_path, index=False)
         print(f"Data disimpan ke {output_path}")
         
-        print("\nPreview Data:")
-        print(df.head())
+        print("\nJumlah baris per file:")
+        print(df.groupby("_berkas_raw").size())
     else:
-        print("\nTidak ada data yang diekstrak. Cek kembali nama file dan folder.")
+        print("\nTidak ada data yang diekstrak.")
 
 if __name__ == "__main__":
     baca_bps()
