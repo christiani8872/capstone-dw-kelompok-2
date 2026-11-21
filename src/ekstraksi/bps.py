@@ -1,110 +1,158 @@
 import json
-import hashlib
 import pandas as pd
 from pathlib import Path
+from src.common.manifest import sha256_raw
 
-def hitung_sha256(filepath):
-    sha256_hash = hashlib.sha256()
-    with open(filepath, "rb") as f:
-        for byte_block in iter(lambda: f.read(4096), b""):
-            sha256_hash.update(byte_block)
-    return sha256_hash.hexdigest()
+def _parse_kunci_bps(kunci, vervar, turvar, tahun_list):
+    kode_vervar, kode_turvar, kode_tahun = None, None, None
+    label_vervar, label_turvar, label_tahun = None, None, None
+
+    # 1. Cari Wilayah (Vervar)
+    for v in vervar:
+        val_str = str(v["val"])
+        if kunci.startswith(val_str):
+            kode_vervar = val_str
+            label_vervar = v["label"]
+            break
+    if not kode_vervar:
+        kode_vervar = kunci[:2]
+        label_vervar = next((v["label"] for v in vervar if str(v["val"]) == kode_vervar), kode_vervar)
+
+    sisa_kunci = kunci[len(kode_vervar):]
+
+    # 2. Cari Turvar
+    kode_turvar = sisa_kunci[0]
+    label_turvar = next((t["label"] for t in turvar if str(t["val"]) == kode_turvar), kode_turvar)
+    sisa_kunci = sisa_kunci[1:]
+
+    # 3. Cari Tahun (Cocokkan LANGSUNG dengan yang ada di tahun_list BPS)
+    found_tahun = False
+    for t in tahun_list:
+        val_tahun = str(t["val"])
+        if val_tahun in sisa_kunci:
+            kode_tahun = val_tahun
+            label_tahun = t["label"]
+            found_tahun = True
+            break
+            
+    if not found_tahun:
+        kode_tahun = sisa_kunci[-4:] if len(sisa_kunci) >= 4 else sisa_kunci
+        label_tahun = next((t["label"] for t in tahun_list if str(t["val"]) == kode_tahun), kode_tahun)
+
+    # NORMALISASI: Karena kode tahun BPS aneh (112, dll), kita samakan kode_tahun dengan tahun (label)
+    # Agar konsisten dengan CSV
+    kode_tahun = label_tahun if label_tahun else kode_tahun
+
+    return kode_vervar, label_vervar, kode_turvar, label_turvar, kode_tahun, label_tahun
+
 
 def baca_bps():
-    folder_bps = Path("data/raw/bps/2026-10-20/json")
-    
-    # KITA GUNAKAN NAMA FILE YANG BERHASIL DIBACA SAJA DULU
-    # (Silakan ganti nama_v1373 jika sudah tahu nama yang benar)
-    daftar_file = [
-        "sdg3_3_2_1_v1373.json",   # <-- NAMA YANG BENAR
-        "sdg3_3_2_1_v1584.json",   # Kematian Bayi
-        "sdg3_3_1_2_v1541.json"    # Persalinan di Fasilitas
-    ]
-    
-    semua_data = []
+    folder_json = Path("data/raw/bps/2026-10-20/json")
+    folder_csv = Path("data/raw/bps/2026-10-20")
 
-    for nama_file in daftar_file:
-        file_path = folder_bps / nama_file
+    daftar_json = ["sdg3_3_2_1_v1373.json", "sdg3_3_2_1_v1584.json", "sdg3_3_1_2_v1541.json"]
+    daftar_csv = ["sdg3_3_2_1_v1373.csv", "sdg3_3_2_1_v1584.csv", "sdg3_3_1_2_v1541.csv"]
+
+    semua_data = []
+    laporan_file = {} 
+
+    # --- PROSES JSON ---
+    for nama_file in daftar_json:
+        file_path = folder_json / nama_file
         if not file_path.exists():
-            print(f"Peringatan: File {nama_file} tidak ditemukan!")
+            print(f"Peringatan: {nama_file} tidak ditemukan!")
             continue
 
-        hash_file = hitung_sha256(file_path)
-        print(f"Membaca {nama_file} | SHA256: {hash_file}")
-
+        hash_file = sha256_raw(f"bps/2026-10-20/json/{nama_file}")
         with open(file_path, "r", encoding="utf-8") as f:
             data_json = json.load(f)
 
+        baris_awal = len(semua_data)
         for block in data_json:
-            var_info = block["var"][0]
-            kode_var = str(var_info["val"])
-            nama_var = var_info["label"]
+            vervar = block.get("vervar", [])
+            turvar = block.get("turvar", [])
+            tahun_list = block.get("tahun", [])
             
-            # Ambil daftar provinsi dan tahun dari JSON
-            list_prov = [p["label"] for p in block.get("vervar", [])]
-            list_tahun = [t["label"] for t in block.get("tahun", [])]
-            
-            # Ekstrak datacontent dengan iterasi biasa
-            for kunci, nilai in block.get("datacontent", {}).items():
-                # Kunci BPS biasanya berakhiran 0 (misal 7400154101190)
-                # Kita tidak perlu memotong string, kita cukup pakai indeks jika datanya list
-                # TAPI karena formatnya dictionary, kita akali dengan mengambil data dari metadata
-                
-                # Karena formatnya dict, kita harus iterasi manual
-                # Kunci = [KodeProv][KodeVar][KodeTahun][0]
-                pass
-                
-            # KODE YANG BENAR: Kita pakai logika pengecekan manual
-            for kunci, nilai in block.get("datacontent", {}).items():
-                # Ambil nilai provinsi dan tahun dari kunci berdasarkan kode_var
-                # Kunci selalu diakhiri '0'
-                inti_kunci = kunci[:-1] 
-                
-                # Cari kode provinsi (4 digit pertama)
-                kode_prov = inti_kunci[:4]
-                
-                # Cari kode tahun (3 digit terakhir)
-                kode_tahun = inti_kunci[-3:]
-                
-                # Cocokkan kode dengan label
-                prov_label = "UNKNOWN"
-                for p in block.get("vervar", []):
-                    if str(p["val"]) == kode_prov:
-                        prov_label = p["label"]
-                        break
-                        
-                tahun_label = "UNKNOWN"
-                for t in block.get("tahun", []):
-                    if str(t["val"]) == kode_tahun:
-                        tahun_label = t["label"]
-                        break
-                
-                if tahun_label != "UNKNOWN" and prov_label != "UNKNOWN":
+            for var_info in block.get("var", []):
+                for kunci, nilai in block.get("datacontent", {}).items():
+                    kode_vervar, label_vervar, kode_turvar, label_turvar, kode_tahun, label_tahun = _parse_kunci_bps(
+                        kunci, vervar, turvar, tahun_list
+                    )
                     semua_data.append({
                         "sumber": "BPS",
-                        "kode_indikator": kode_var,
-                        "nama_indikator": nama_var,
-                        "wilayah": prov_label,
-                        "tahun": int(tahun_label),
-                        "nilai": float(nilai),
-                        "berkas_raw": nama_file,
-                        "sha256_raw": hash_file
+                        "kode_indikator": str(var_info["val"]),
+                        "nama_indikator": var_info["label"],
+                        "kode_wilayah": kode_vervar,
+                        "wilayah": label_vervar,
+                        "kode_turvar": kode_turvar,
+                        "turvar": label_turvar,
+                        "kode_tahun": kode_tahun,
+                        "tahun": label_tahun,
+                        "nilai": str(nilai) if nilai is not None else None,
+                        "_berkas_raw": nama_file,
+                        "_sha256_raw": hash_file,
                     })
+        laporan_file[nama_file] = len(semua_data) - baris_awal
 
+    # --- PROSES CSV ---
+    for nama_file in daftar_csv:
+        file_path = folder_csv / nama_file
+        if not file_path.exists():
+            print(f"Peringatan: {nama_file} tidak ditemukan!")
+            continue
+
+        hash_file = sha256_raw(f"bps/2026-10-20/{nama_file}")
+        df_csv = pd.read_csv(file_path, dtype=str)
+        
+        baris_awal = len(semua_data)
+        for _, baris in df_csv.iterrows():
+            semua_data.append({
+                "sumber": "BPS",
+                "kode_indikator": baris.get("var_id"),
+                "nama_indikator": f"Var {baris.get('var_id')}",
+                "kode_wilayah": baris.get("kode_wilayah"),
+                "wilayah": baris.get("wilayah"),
+                "kode_turvar": None,
+                "turvar": None,
+                "kode_tahun": baris.get("tahun"),
+                "tahun": baris.get("tahun"),
+                "nilai": baris.get("nilai"),
+                "_berkas_raw": nama_file,
+                "_sha256_raw": hash_file,
+            })
+        laporan_file[nama_file] = len(semua_data) - baris_awal
+
+    # --- SIMPAN & VALIDASI ---
     df = pd.DataFrame(semua_data)
-    if not df.empty:
-        df = df.sort_values(by=["kode_indikator", "wilayah", "tahun"]).reset_index(drop=True)
-        print(f"\nBerhasil mengekstrak {len(df)} baris data BPS.")
-        
-        output_path = Path("data/silver/bps_ekstrak.parquet")
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        df.to_parquet(output_path, index=False)
-        print(f"Data disimpan ke {output_path}")
-        
-        print("\nPreview Data:")
-        print(df.head())
-    else:
-        print("\nTidak ada data yang diekstrak. Cek kembali nama file dan folder.")
+    if df.empty:
+        print("Tidak ada data yang diekstrak.")
+        return
+
+    df = df.sort_values(by=["kode_indikator", "kode_wilayah", "tahun"], na_position="last").reset_index(drop=True)
+    
+    # Paksa tipe string agar parquet aman
+    kolom_string = ["kode_indikator", "kode_wilayah", "kode_turvar", "kode_tahun", "nilai"]
+    for kol in kolom_string:
+        df[kol] = df[kol].apply(lambda x: str(x) if pd.notna(x) else None)
+
+    # Validasi Lineage
+    assert df["_berkas_raw"].notna().all(), "GAGAL: _berkas_raw ada yang kosong!"
+    assert df["_sha256_raw"].notna().all(), "GAGAL: _sha256_raw ada yang kosong!"
+
+    output_path = Path("data/silver/bps_ekstrak.parquet")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(output_path, index=False)
+
+    # --- CETAK BUKTI ---
+    print(f"\n Berhasil mengekstrak TOTAL {len(df)} baris data BPS.")
+    print(" Validasi Lineage: Semua baris memiliki _berkas_raw dan _sha256_raw.")
+    print("\n BUKTI JUMLAH BARIS PER BERKAS:")
+    for fname, n in laporan_file.items():
+        print(f"  - {fname}: {n} baris")
+    
+    print("\n SAMPEL PEMETAAN DIMENSI (5 Baris Pertama):")
+    print(df[["kode_indikator", "kode_wilayah", "wilayah", "kode_turvar", "turvar", "kode_tahun", "tahun", "_berkas_raw"]].head(5).to_string())
+
 
 if __name__ == "__main__":
     baca_bps()
