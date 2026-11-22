@@ -1,4 +1,4 @@
-import json
+﻿import json
 import pandas as pd
 from pathlib import Path
 from src.common.manifest import sha256_raw
@@ -34,7 +34,7 @@ def _parse_kunci_bps(kunci, vervar, turvar, tahun_list):
             label_tahun = t["label"]
             found_tahun = True
             break
-            
+
     if not found_tahun:
         kode_tahun = sisa_kunci[-4:] if len(sisa_kunci) >= 4 else sisa_kunci
         label_tahun = next((t["label"] for t in tahun_list if str(t["val"]) == kode_tahun), kode_tahun)
@@ -54,7 +54,7 @@ def baca_bps():
     daftar_csv = ["sdg3_3_2_1_v1373.csv", "sdg3_3_2_1_v1584.csv", "sdg3_3_1_2_v1541.csv"]
 
     semua_data = []
-    laporan_file = {} 
+    laporan_file = {}
 
     # --- PROSES JSON ---
     for nama_file in daftar_json:
@@ -72,7 +72,7 @@ def baca_bps():
             vervar = block.get("vervar", [])
             turvar = block.get("turvar", [])
             tahun_list = block.get("tahun", [])
-            
+
             for var_info in block.get("var", []):
                 for kunci, nilai in block.get("datacontent", {}).items():
                     kode_vervar, label_vervar, kode_turvar, label_turvar, kode_tahun, label_tahun = _parse_kunci_bps(
@@ -103,7 +103,7 @@ def baca_bps():
 
         hash_file = sha256_raw(f"bps/2026-10-20/{nama_file}")
         df_csv = pd.read_csv(file_path, dtype=str)
-        
+
         baris_awal = len(semua_data)
         for _, baris in df_csv.iterrows():
             semua_data.append({
@@ -129,7 +129,7 @@ def baca_bps():
         return
 
     df = df.sort_values(by=["kode_indikator", "kode_wilayah", "tahun"], na_position="last").reset_index(drop=True)
-    
+
     # Paksa tipe string agar parquet aman
     kolom_string = ["kode_indikator", "kode_wilayah", "kode_turvar", "kode_tahun", "nilai"]
     for kol in kolom_string:
@@ -149,7 +149,7 @@ def baca_bps():
     print("\n BUKTI JUMLAH BARIS PER BERKAS:")
     for fname, n in laporan_file.items():
         print(f"  - {fname}: {n} baris")
-    
+
     print("\n SAMPEL PEMETAAN DIMENSI (5 Baris Pertama):")
     print(df[["kode_indikator", "kode_wilayah", "wilayah", "kode_turvar", "turvar", "kode_tahun", "tahun", "_berkas_raw"]].head(5).to_string())
 
