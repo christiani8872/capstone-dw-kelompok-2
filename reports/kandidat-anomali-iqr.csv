@@ -1,0 +1,4 @@
+kode_indikator,wilayah,tahun,nilai,q1,q3,iqr,batas_bawah,batas_atas,alasan
+1373,PAPUA,2012,115.0,34.5,57.5,23.0,0.0,92.0,Nilai 115.00 di atas batas atas IQR (92.00)
+1373,PAPUA BARAT,2012,109.0,34.5,57.5,23.0,0.0,92.0,Nilai 109.00 di atas batas atas IQR (92.00)
+1584,PAPUA BARAT,2012,74.0,29.0,46.0,17.0,3.5,71.5,Nilai 74.00 di atas batas atas IQR (71.50)
