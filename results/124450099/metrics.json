@@ -1,6 +1,13 @@
 {
+  "nim": "124450099",
+  "nama": "MUHAMMAD SYAFIQUL FALAKH",
+  "komponen": "Tabel nasional seri utama & pembanding, pasangan rekonsiliasi, skema Silver DuckDB, dan pengukur pandas",
+  "sprint": 1,
   "metrik": {
     "berkas_mentah_terverifikasi": 16,
+    "jumlah_seri_nasional": 9,
+    "total_baris_nasional_long": 317,
+    "total_periode_nasional_wide": 74,
     "pasangan_rekonsiliasi": 5,
     "periode_beririsan": 6
   },

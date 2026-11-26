@@ -1,0 +1,24 @@
+BUKTI PEMERIKSAAN SILVER
+Berkas: data/silver/silver.parquet
+
+1. PEMERIKSAAN SKEMA
+Perintah:
+python -m src.common.skema data/silver/silver.parquet
+
+Hasil:
+LOLOS 553 baris, 9 seri, 35 wilayah, 7 berkas sumber
+
+2. PEMERIKSAAN KUNCI UNIK
+Kunci:
+sumber, seri_kode, wilayah_kode, periode, rincian, _berkas_raw
+
+Perintah:
+python -c "import pandas as pd; df=pd.read_parquet('data/silver/silver.parquet'); kunci=['sumber','seri_kode','wilayah_kode','periode','rincian','_berkas_raw']; print('Jumlah baris:',len(df)); print('Jumlah duplikat kunci:',df.duplicated(kunci).sum()); print('Jumlah kunci unik:',df[kunci].drop_duplicates().shape[0])"
+
+Hasil:
+Jumlah baris: 553
+Jumlah duplikat kunci: 0
+Jumlah kunci unik: 553
+
+KESIMPULAN:
+Pemeriksaan skema berhasil dan tidak ditemukan duplikasi kunci unik.
