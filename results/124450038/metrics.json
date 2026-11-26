@@ -1,5 +1,8 @@
 {
   "metrik": {
+    "seri_silver": 9,
+    "rincian_dienkode": 3,
+    "baris_silver": 553,
     "berkas_raw_terverifikasi": 16,
     "seri_panel": 3,
     "baris_gold": 342
