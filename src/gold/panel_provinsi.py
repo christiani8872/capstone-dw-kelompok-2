@@ -55,6 +55,36 @@ def bangun_panel(silver: pd.DataFrame) -> pd.DataFrame:
         validate="one_to_one",
     )
 
+    # Bawa penanda outlier Sprint 1 ke Gold tanpa mengubah nilai.
+    panel["flag_outlier"] = (
+        (
+            panel["seri_kode"].astype(str).eq("var1373")
+            & panel["wilayah_kode"].astype(str).eq("9400")
+            & panel["periode"].astype(str).eq("2012")
+            & panel["nilai"].eq(115.0)
+        )
+        | (
+            panel["seri_kode"].astype(str).eq("var1373")
+            & panel["wilayah_kode"].astype(str).eq("9100")
+            & panel["periode"].astype(str).eq("2012")
+            & panel["nilai"].eq(109.0)
+        )
+        | (
+            panel["seri_kode"].astype(str).eq("var1584")
+            & panel["wilayah_kode"].astype(str).eq("9100")
+            & panel["periode"].astype(str).eq("2012")
+            & panel["nilai"].eq(74.0)
+        )
+    )
+
+    # K-020: belum ada bukti kuat patahan pada seri var1541.
+    panel["flag_patahan"] = False
+    panel["catatan_patahan"] = ""
+    panel.loc[
+        panel["seri_kode"].astype(str).eq("var1541"),
+        "catatan_patahan",
+    ] = "Belum ada bukti kuat patahan; nilai dipertahankan."
+
     # Status mengikuti grid kelengkapan; nilai kosong tidak dianggap nol.
     panel["status_ketersediaan"] = panel["status"]
     panel = panel.drop(columns=["status"])

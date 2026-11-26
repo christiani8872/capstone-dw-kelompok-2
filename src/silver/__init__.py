@@ -21,23 +21,24 @@ SATUAN = {
 
 
 def rincian_baris(row):
-    """Pertahankan dimensi WHO; sumber lain menggunakan total."""
-    if row["sumber"] == "WHO_GHO":
-        dimensi = [
-            ("sex", "DIM_SEX"),
-            ("age", "DIM_AGE"),
-            ("wealth", "DIM_POP_WEALTH_QUINTILE"),
-        ]
+    """Standarkan rincian agar sesuai dengan aturan pemilihan Gold."""
+    if row["sumber"] != "WHO_GHO":
+        return "Tidak ada"
 
-        bagian = [
-            f"{nama}={row[kolom]}"
-            for nama, kolom in dimensi
-            if pd.notna(row[kolom])
-        ]
+    bagian = []
 
-        return "|".join(bagian) if bagian else "total"
+    if pd.notna(row["DIM_AGE"]):
+        bagian.append(f"AGE={row['DIM_AGE']}")
 
-    return "total"
+    if pd.notna(row["DIM_SEX"]):
+        bagian.append(f"SEX={row['DIM_SEX']}")
+
+    if pd.notna(row["DIM_POP_WEALTH_QUINTILE"]):
+        bagian.append(
+            f"WEALTH_QUINTILE={row['DIM_POP_WEALTH_QUINTILE']}"
+        )
+
+    return "; ".join(bagian) if bagian else "Tidak ada"
 
 
 def jalankan(mentah):
