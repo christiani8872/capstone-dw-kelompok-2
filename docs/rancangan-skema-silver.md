@@ -37,3 +37,27 @@ Kunci primer ditetapkan pada kombinasi 6 kolom:
 `(sumber, seri_kode, wilayah_kode, periode, rincian, _berkas_raw)`
 
 Kombinasi ini menjamin setiap titik observasi unik berdasarkan sumber, indikator, wilayah, waktu, dimensi disagregasi, dan berkas rilis mentahnya, sekaligus tetap mengizinkan perbandingan nilai apabila indikator yang sama muncul dari dua berkas snapshot yang berbeda.
+
+---
+
+## Hasil Uji Pemuatan Nyata pada Silver Tim (`data/silver/silver.parquet`)
+
+Pengujian dijalankan langsung terhadap berkas `data/silver/silver.parquet` tim (bukan sampel fallback) melalui `python -m src.silver.muat_duckdb`:
+
+- **Berkas sumber:** `data/silver/silver.parquet` (553 baris, 11 kolom baku)
+- **Basis data target:** `data/silver/silver.duckdb` (tabel `silver`, DDL `sql/silver.sql`)
+- **Validasi sebelum muat:** Lolos `periksa_silver()` (skema 11 kolom, tipe data, SHA-256 `MANIFEST.csv`, kunci primer komposit) dan lolos `periksa_satuan()` (kesesuaian satuan tiap seri terhadap metadata sumber).
+- **Perbaikan data uji fallback:** Satuan `var1373` pada `buat_sampel_silver()` dikoreksi dari `per 100.000 kelahiran hidup` menjadi `per 1.000 kelahiran hidup` (nilai nasional 2017 = `32.0`).
+
+| Sumber | Kode Seri | Satuan Terverifikasi | Jumlah Baris |
+| :--- | :--- | :--- | :---: |
+| BPS | `var1373` | `per 1.000 kelahiran hidup` | 35 |
+| BPS | `var1541` | `persen` | 175 |
+| BPS | `var1584` | `per 1.000 kelahiran hidup` | 35 |
+| WDI | `SH.DYN.MORT` | `per 1.000 kelahiran hidup` | 65 |
+| WDI | `SH.STA.BRTC.ZS` | `persen` | 21 |
+| WDI | `SH.STA.MMRT` | `per 100.000 kelahiran hidup` | 39 |
+| WHO_GHO | `MDG_0000000007` | `per 1.000 kelahiran hidup` | 73 |
+| WHO_GHO | `MDG_0000000026` | `per 100.000 kelahiran hidup` | 39 |
+| WHO_GHO | `WHOSIS_000003` | `per 1.000 kelahiran hidup` | 71 |
+| **Total** | **9 seri** | **3 satuan baku** | **553** |

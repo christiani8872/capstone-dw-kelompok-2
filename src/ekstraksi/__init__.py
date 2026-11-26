@@ -1,39 +1,54 @@
+﻿
 import pandas as pd
 from pathlib import Path
+
 from .bps import baca_bps
 from .wdi import baca_wdi
 from .who import baca_who
 
+
 def jalankan():
-    print("=== MEMULAI TAHAP EKSTRAKSI (Dipanggil oleh pipeline.py) ===")
-    
-    # 1. Jalankan semua pembaca
+    print("=== MEMULAI TAHAP EKSTRAKSI ===")
+
+    # 1. Jalankan semua pembaca data
     baca_bps()
     baca_wdi()
     baca_who()
 
-        # 2. Gabungkan semua hasil (Tugas #9)
+    # 2. Gabungkan semua hasil ekstraksi
     print("\nMenggabungkan semua data ekstraksi...")
+
     folder_silver = Path("data/silver")
-    
+
     df_bps = pd.read_parquet(folder_silver / "bps_ekstrak.parquet")
     df_wdi = pd.read_parquet(folder_silver / "wdi_ekstrak.parquet")
     df_who = pd.read_parquet(folder_silver / "who_ekstrak.parquet")
-    
-    df_gabungan = pd.concat([df_bps, df_wdi, df_who], ignore_index=True)
-    
-    # --- PERBAIKAN: Paksa semua kolom kunci menjadi string agar PyArrow tidak error ---
-    kolom_rawan = ["tahun", "kode_tahun", "kode_wilayah", "kode_turvar", "kode_indikator", "nilai"]
-    for kol in kolom_rawan:
-        if kol in df_gabungan.columns:
-            # Ubah ke string murni, biarkan NaN/None tetap kosong
-            df_gabungan[kol] = df_gabungan[kol].apply(lambda x: str(x) if pd.notna(x) else None)
-    # ---------------------------------------------------------------------------------
+
+    df_gabungan = pd.concat(
+        [df_bps, df_wdi, df_who],
+        ignore_index=True,
+    )
+
+    # 3. Samakan tipe kolom agar konsisten
+    kolom_rawan = [
+        "tahun",
+        "kode_tahun",
+        "kode_wilayah",
+        "kode_turvar",
+        "kode_indikator",
+        "nilai",
+    ]
+
+    for kolom in kolom_rawan:
+        if kolom in df_gabungan.columns:
+            df_gabungan[kolom] = df_gabungan[kolom].apply(
+                lambda x: str(x) if pd.notna(x) else None
+            )
 
     output_path = folder_silver / "raw_gabungan.parquet"
     df_gabungan.to_parquet(output_path, index=False)
-    
-    # 3. Pemeriksaan Cakupan Ekstraksi
+
+    # 4. Pemeriksaan cakupan ekstraksi berdasarkan MANIFEST
     print("\n=== PEMERIKSAAN CAKUPAN EKSTRAKSI ===")
 
     manifest_path = Path("data/raw/MANIFEST.csv")
@@ -90,12 +105,24 @@ def jalankan():
         belum_terbaca = nama_data_diharapkan - nama_data_terbaca
 
         print(f"Total file di MANIFEST.csv: {len(df_manifest)}")
-        print(f"File data utama yang diharapkan: {len(nama_data_diharapkan)}")
-        print(f"File data utama berhasil diekstrak: {len(nama_data_terbaca)}")
-        print(f"File metadata/pendukung tidak diekstrak: {len(df_manifest) - len(df_data_utama)}")
+        print(
+            "File data utama yang diharapkan: "
+            f"{len(nama_data_diharapkan)}"
+        )
+        print(
+            "File data utama berhasil diekstrak: "
+            f"{len(nama_data_terbaca)}"
+        )
+        print(
+            "File metadata/pendukung tidak diekstrak: "
+            f"{len(df_manifest) - len(df_data_utama)}"
+        )
 
         if not belum_terbaca:
-            print("Cakupan data utama 100%: semua berkas data utama berhasil diekstrak.")
+            print(
+                "Cakupan data utama 100%: "
+                "semua berkas data utama berhasil diekstrak."
+            )
         else:
             print("Ada berkas data utama yang belum diekstrak:")
             for nama in sorted(belum_terbaca):
@@ -103,6 +130,7 @@ def jalankan():
 
     else:
         print("File MANIFEST.csv tidak ditemukan.")
+
     print(f"Data disimpan ke: {output_path}")
-    
+
     return str(output_path)
