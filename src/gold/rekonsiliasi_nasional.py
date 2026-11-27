@@ -71,6 +71,14 @@ def bangun_tabel_nasional(
         & silver["seri_kode"].isin(KELOMPOK_REKONSILIASI)
     ].copy()
 
+    # Untuk BPS, gunakan JSON sebagai sumber kanonis.
+    nas = nas[
+        ~(
+            nas["sumber"].eq("BPS")
+            & ~nas["_berkas_raw"].str.lower().str.endswith(".json")
+        )
+    ].copy()
+
     nas["seri_kode"] = nas["seri_kode"].astype(str)
     nas["periode"] = nas["periode"].astype(str)
 
