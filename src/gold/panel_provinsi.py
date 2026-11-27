@@ -1,3 +1,4 @@
+
 """Membangun panel indikator BPS tingkat provinsi untuk Gold."""
 
 from pathlib import Path
@@ -10,7 +11,7 @@ GRID_PATH = ROOT / "reports" / "kelengkapan-panel-38-provinsi.csv"
 
 
 def bangun_panel(silver: pd.DataFrame) -> pd.DataFrame:
-    """Gabungkan grid kelengkapan 38 provinsi dengan nilai dari Silver."""
+    """Gabungkan grid kelengkapan 38 provinsi dengan nilai Silver."""
 
     grid = pd.read_csv(
         GRID_PATH,
@@ -21,58 +22,76 @@ def bangun_panel(silver: pd.DataFrame) -> pd.DataFrame:
         },
     )
 
-    # Ambil hanya indikator BPS yang masuk panel provinsi.
     seri_panel = ["var1373", "var1584", "var1541"]
     grid = grid[grid["seri_kode"].isin(seri_panel)].copy()
 
-    # Samakan format kunci agar dapat digabungkan dengan Silver.
     data = silver.copy()
     data["seri_kode"] = data["seri_kode"].astype(str)
     data["wilayah_kode"] = data["wilayah_kode"].astype(str)
     data["periode"] = data["periode"].astype(str)
 
-    # Nilai aktual diambil dari Silver, bukan dari laporan kelengkapan.
-    nilai_silver = data[
+    # Gunakan data BPS JSON sebagai sumber observasi kanonis.
+    observasi = data[
         data["sumber"].eq("BPS")
         & data["seri_kode"].isin(seri_panel)
         & data["wilayah_kode"].ne("9999")
-    ][
-        [
-            "seri_kode",
-            "periode",
-            "wilayah_kode",
-            "nilai",
-            "satuan",
-            "_berkas_raw",
-            "_sha256_raw",
-        ]
+        & data["_berkas_raw"].str.lower().str.endswith(".json")
+    ].copy()
+
+    kunci = ["wilayah_kode", "periode", "seri_kode"]
+
+    if observasi.duplicated(kunci).any():
+        raise ValueError("Ditemukan kunci panel ganda pada Silver.")
+
+    kolom_observasi = kunci + [
+        "nilai",
+        "satuan",
+        "jenis_periode",
+        "rincian",
+        "_berkas_raw",
+        "_sha256_raw",
     ]
 
     panel = grid.merge(
-        nilai_silver,
-        on=["seri_kode", "periode", "wilayah_kode"],
+        observasi[kolom_observasi],
+        on=kunci,
         how="left",
         validate="one_to_one",
     )
 
+    # Satuan tetap tersedia meskipun nilai belum diterbitkan.
+    satuan_indikator = {
+        "var1373": "per_1000_kelahiran_hidup",
+        "var1584": "per_1000_kelahiran_hidup",
+        "var1541": "persen",
+    }
+
+    panel["satuan"] = panel["satuan"].fillna(
+        panel["seri_kode"].map(satuan_indikator)
+    )
+
+    panel["sumber"] = "BPS"
+    panel["jenis_periode"] = panel["jenis_periode"].fillna("tahun")
+    panel["rincian"] = panel["rincian"].fillna("total")
+
     # Bawa penanda outlier Sprint 1 ke Gold tanpa mengubah nilai.
     panel["flag_outlier"] = (
         (
-            panel["seri_kode"].astype(str).eq("var1373")
-            & panel["wilayah_kode"].astype(str).eq("9400")
-            & panel["periode"].astype(str).eq("2012")
+            panel["seri_kode"].eq("var1373")
+            & panel["wilayah_kode"].eq("9400")
+            & panel["periode"].eq("2012")
             & panel["nilai"].eq(115.0)
         )
         | (
-            panel["seri_kode"].astype(str).eq("var1373")
-            & panel["wilayah_kode"].astype(str).eq("9100")
-            & panel["periode"].astype(str).eq("2012")
+            panel["seri_kode"].eq("var1373")
+            & panel["wilayah_kode"].eq("9100")
+            & panel["periode"].eq("2012")
             & panel["nilai"].eq(109.0)
         )
         | (
-            panel["seri_kode"].astype(str).eq("var1584")
-            & panel["wilayah_kode"].astype(str).eq("9100")
-            & panel["periode"].astype(str).eq("2012")
+            panel["seri_kode"].eq("var1584")
+            & panel["wilayah_kode"].eq("9100")
+            & panel["periode"].eq("2012")
             & panel["nilai"].eq(74.0)
         )
     )
@@ -81,17 +100,54 @@ def bangun_panel(silver: pd.DataFrame) -> pd.DataFrame:
     panel["flag_patahan"] = False
     panel["catatan_patahan"] = ""
     panel.loc[
-        panel["seri_kode"].astype(str).eq("var1541"),
+        panel["seri_kode"].eq("var1541"),
         "catatan_patahan",
     ] = "Belum ada bukti kuat patahan; nilai dipertahankan."
 
-    # Status mengikuti grid kelengkapan; nilai kosong tidak dianggap nol.
     panel["status_ketersediaan"] = panel["status"]
     panel = panel.drop(columns=["status"])
 
-    # Urutkan agar hasil konsisten setiap kali dijalankan.
-    panel = panel.sort_values(
-        ["seri_kode", "periode", "wilayah_kode"]
-    ).reset_index(drop=True)
+    tidak_ada_nilai = (
+        panel["status_ketersediaan"].eq("teramati")
+        & panel["nilai"].isna()
+    )
 
-    return panel
+    if tidak_ada_nilai.any():
+        raise ValueError(
+            "Ada baris berstatus teramati tetapi nilai Silver tidak ditemukan."
+        )
+
+    if len(panel) != 342:
+        raise ValueError(
+            f"Panel seharusnya 342 baris, ditemukan {len(panel)}."
+        )
+
+    if panel["wilayah_kode"].nunique() != 38:
+        raise ValueError("Panel harus mencakup tepat 38 provinsi.")
+
+    if panel.duplicated(kunci).any():
+        raise ValueError("Kunci panel Gold tidak unik.")
+
+    kolom = [
+        "sumber",
+        "seri_kode",
+        "wilayah_kode",
+        "nama_wilayah",
+        "periode",
+        "jenis_periode",
+        "rincian",
+        "nilai",
+        "satuan",
+        "status_ketersediaan",
+        "flag_outlier",
+        "flag_patahan",
+        "catatan_patahan",
+        "_berkas_raw",
+        "_sha256_raw",
+    ]
+
+    return (
+        panel[kolom]
+        .sort_values(kunci)
+        .reset_index(drop=True)
+    )
