@@ -38,6 +38,16 @@ Data Silver dibentuk melalui proses transformasi pada src/silver/__init__.py, ya
 
 Hasil transformasi disimpan dalam data/silver/silver.parquet dengan total 798 baris, 9 seri indikator, 35 wilayah (34 provinsi dan 1 wilayah nasional), serta 10 berkas sumber. Dengan demikian, data yang tersedia belum mencakup seluruh 38 provinsi.
 
+### Penyimpanan Relasional (DuckDB) vs Dokumen JSON Mentah
+
+Seluruh lapisan Silver (`silver`) serta lapisan Gold (`panel_provinsi`, `tabel_nasional`, dan `rekonsiliasi`) dimuat ke basis data relasional **DuckDB** (`data/gold/capstone.duckdb`) melalui skrip DDL berkunci primer (`sql/silver.sql` dan `sql/gold.sql`) pada `pipeline.py`.
+
+| Aspek | Penyimpanan Dokumen JSON Mentah (Lapis Raw) | Basis Data Relasional DuckDB (Lapis Silver & Gold) |
+|:---|:---|:---|
+| **Struktur & Kunci** | Bersarang (*nested*) dan bervariasi antar-API (BPS, WDI, WHO); tidak menegakkan `PRIMARY KEY` lintas sumber. | Skema tabular datar dengan `PRIMARY KEY` komposit dan `CHECK` domain yang menolak duplikasi kunci secara otomatis. |
+| **Kinerja Kueri Analitik** | Memerlukan pemindaian ulang seluruh berkas dan *parsing* teks berulang untuk setiap agregasi atau *join*. | Penyimpanan berorientasi kolom (*columnar*) yang mengeksekusi *join*, agregasi panel provinsi, dan perhitungan selisih rekonsiliasi secara langsung tanpa server terpisah. |
+| **Kesesuaian Lapis** | Cocok untuk **lapis Raw** (`data/raw/`) guna menjaga keaslian respons API dan verifikasi SHA-256 terhadap `MANIFEST.csv`. | Cocok untuk **lapis Silver dan Gold** yang membutuhkan integritas skema, tipe data baku, serta kueri lintas tabel siap analisis. |
+
 ## Masalah data dan penanganannya
 
 | Masalah                                | Temuan dan jumlah terdampak                                                                                                              | Keputusan                                                                                                                                 | Referensi    |
