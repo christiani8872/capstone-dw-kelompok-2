@@ -42,7 +42,21 @@ def jalankan(silver: pd.DataFrame) -> dict[str, pd.DataFrame]:
     nasional_siap, audit_nasional_periode = pilih_periode_gold(
         nasional_rincian, "nasional"
     )
+    # Tampilkan audit aturan pemilihan Gold.
+    print("\n=== AUDIT PEMILIHAN GOLD ===")
 
+    daftar_audit = [
+        ("Snapshot terbaru", audit_snapshot),
+        ("Rincian panel", audit_panel_rincian),
+        ("Periode panel", audit_panel_periode),
+        ("Rincian nasional", audit_nasional_rincian),
+        ("Periode nasional", audit_nasional_periode),
+    ]
+
+    for nama_aturan, audit in daftar_audit:
+        print(f"\nAturan: {nama_aturan}")
+        for nama_metrik, jumlah in audit.items():
+            print(f"  {nama_metrik}: {jumlah}")
     # 2. Panel indikator BPS tingkat provinsi.
     panel = bangun_panel(panel_siap)
     panel.to_parquet(
