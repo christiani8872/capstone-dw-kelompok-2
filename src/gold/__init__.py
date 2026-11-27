@@ -1,4 +1,3 @@
-
 """Tahap Gold: panel provinsi dan rekonsiliasi nasional."""
 
 from pathlib import Path
@@ -7,12 +6,13 @@ import sqlite3
 import pandas as pd
 
 from src.gold.panel_provinsi import bangun_panel
-from src.gold.rekonsiliasi_nasional import bangun_tabel_nasional
 from src.gold.pemilihan_nilai import (
-    pilih_snapshot_terbaru,
-    pilih_rincian_gold,
     pilih_periode_gold,
+    pilih_rincian_gold,
+    pilih_snapshot_terbaru,
 )
+from src.gold.rekonsiliasi import bangun_rekonsiliasi
+from src.gold.rekonsiliasi_nasional import bangun_tabel_nasional
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -54,7 +54,10 @@ def jalankan(silver: pd.DataFrame) -> dict[str, pd.DataFrame]:
         nasional_siap
     )
 
-    # 4. Simpan seluruh tabel ke SQLite.
+    # 4. Tabel rekonsiliasi berpasangan dengan kategori selisih (Kartu #29).
+    rekonsiliasi = bangun_rekonsiliasi(nasional_long)
+
+    # 5. Simpan seluruh tabel ke SQLite.
     with sqlite3.connect(SQLITE_PATH) as conn:
         panel.to_sql(
             "panel_provinsi",
@@ -77,9 +80,16 @@ def jalankan(silver: pd.DataFrame) -> dict[str, pd.DataFrame]:
             if_exists="replace",
             index=False,
         )
+        rekonsiliasi.to_sql(
+            "rekonsiliasi",
+            conn,
+            if_exists="replace",
+            index=False,
+        )
 
     return {
         "panel_provinsi": panel,
         "rekonsiliasi_nasional": nasional_long,
         "nasional_periode_x_seri": nasional_wide,
+        "rekonsiliasi": rekonsiliasi,
     }
