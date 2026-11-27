@@ -1,10 +1,11 @@
-"""Tahap Gold: panel provinsi dan rekonsiliasi nasional."""
+"""Tahap Gold: panel provinsi, tabel nasional, rekonsiliasi berpasangan, dan pemuatan SQL."""
 
 from pathlib import Path
 import sqlite3
 
 import pandas as pd
 
+from src.gold.muat_duckdb import muat_semua_ke_duckdb
 from src.gold.panel_provinsi import bangun_panel
 from src.gold.pemilihan_nilai import (
     pilih_periode_gold,
@@ -21,7 +22,7 @@ SQLITE_PATH = GOLD_DIR / "gold.sqlite"
 
 
 def jalankan(silver: pd.DataFrame) -> dict[str, pd.DataFrame]:
-    """Terima Silver, bangun tabel Gold, simpan Parquet dan SQLite."""
+    """Terima Silver, bangun tabel Gold, simpan Parquet, SQLite, dan DuckDB."""
 
     GOLD_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -86,6 +87,14 @@ def jalankan(silver: pd.DataFrame) -> dict[str, pd.DataFrame]:
             if_exists="replace",
             index=False,
         )
+
+    # 6. Muat Silver dan seluruh tabel Gold ke DuckDB ber-DDL kunci primer (Kartu #28).
+    muat_semua_ke_duckdb(
+        silver_df=silver,
+        panel_df=panel,
+        nasional_df=nasional_long,
+        rekonsiliasi_df=rekonsiliasi,
+    )
 
     return {
         "panel_provinsi": panel,
