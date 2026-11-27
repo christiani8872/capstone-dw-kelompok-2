@@ -97,6 +97,18 @@ def bangun_tabel_nasional(
         lambda kode: KELOMPOK_REKONSILIASI[kode][1]
     )
 
+    # Penanda Sprint 1 tetap dibawa ke tabel Gold nasional.
+    # Outlier yang tercatat pada K-017 sampai K-019 adalah data provinsi.
+    nas["flag_outlier"] = False
+
+    # K-020: belum ada bukti kuat patahan seri var1541.
+    nas["flag_patahan"] = False
+    nas["catatan_patahan"] = ""
+    nas.loc[
+        nas["seri_kode"].astype(str).eq("var1541"),
+        "catatan_patahan",
+    ] = "Belum ada bukti kuat patahan; nilai dipertahankan."
+
     kolom = [
         "kelompok_rekonsiliasi",
         "peran_seri",
@@ -110,6 +122,9 @@ def bangun_tabel_nasional(
         "satuan",
         "satuan_baku",
         "rincian",
+        "flag_outlier",
+        "flag_patahan",
+        "catatan_patahan",
         "_berkas_raw",
         "_sha256_raw",
     ]

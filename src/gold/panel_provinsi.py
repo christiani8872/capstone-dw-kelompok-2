@@ -74,6 +74,36 @@ def bangun_panel(silver: pd.DataFrame) -> pd.DataFrame:
     panel["jenis_periode"] = panel["jenis_periode"].fillna("tahun")
     panel["rincian"] = panel["rincian"].fillna("total")
 
+    # Bawa penanda outlier Sprint 1 ke Gold tanpa mengubah nilai.
+    panel["flag_outlier"] = (
+        (
+            panel["seri_kode"].eq("var1373")
+            & panel["wilayah_kode"].eq("9400")
+            & panel["periode"].eq("2012")
+            & panel["nilai"].eq(115.0)
+        )
+        | (
+            panel["seri_kode"].eq("var1373")
+            & panel["wilayah_kode"].eq("9100")
+            & panel["periode"].eq("2012")
+            & panel["nilai"].eq(109.0)
+        )
+        | (
+            panel["seri_kode"].eq("var1584")
+            & panel["wilayah_kode"].eq("9100")
+            & panel["periode"].eq("2012")
+            & panel["nilai"].eq(74.0)
+        )
+    )
+
+    # K-020: belum ada bukti kuat patahan pada seri var1541.
+    panel["flag_patahan"] = False
+    panel["catatan_patahan"] = ""
+    panel.loc[
+        panel["seri_kode"].eq("var1541"),
+        "catatan_patahan",
+    ] = "Belum ada bukti kuat patahan; nilai dipertahankan."
+
     panel["status_ketersediaan"] = panel["status"]
     panel = panel.drop(columns=["status"])
 
@@ -109,6 +139,9 @@ def bangun_panel(silver: pd.DataFrame) -> pd.DataFrame:
         "nilai",
         "satuan",
         "status_ketersediaan",
+        "flag_outlier",
+        "flag_patahan",
+        "catatan_patahan",
         "_berkas_raw",
         "_sha256_raw",
     ]
